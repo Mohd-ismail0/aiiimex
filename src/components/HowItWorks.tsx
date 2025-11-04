@@ -1,4 +1,5 @@
 import { FileText, CheckCircle, FileCheck, Truck, DollarSign } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -34,10 +35,17 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation(0.2);
+  const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation(0.1);
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation(0.2);
+
   return (
     <section className="py-20 lg:py-32 bg-gradient-hero">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
+        <div 
+          ref={titleRef}
+          className={`max-w-3xl mx-auto text-center mb-16 scroll-fade-in ${titleVisible ? 'visible' : ''}`}
+        >
           <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             How It Works
           </h2>
@@ -46,20 +54,22 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto" ref={stepsRef}>
           <div className="relative">
             {/* Timeline line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary transform -translate-y-1/2" />
+            <div className={`hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-primary via-accent to-primary transform -translate-y-1/2 transition-all duration-1000 ${stepsVisible ? 'scale-x-100' : 'scale-x-0'}`} />
             
             {/* Steps */}
             <div className="grid md:grid-cols-5 gap-8 relative">
               {steps.map((step, index) => (
                 <div 
                   key={index} 
-                  className="flex flex-col items-center text-center animate-slide-up"
-                  style={{ animationDelay: `${index * 150}ms` }}
+                  className={`flex flex-col items-center text-center scroll-fade-in ${stepsVisible ? 'visible' : ''}`}
+                  style={{ 
+                    transitionDelay: stepsVisible ? `${index * 150}ms` : '0ms'
+                  }}
                 >
-                  <div className="w-20 h-20 rounded-full bg-gradient-accent flex items-center justify-center mb-4 shadow-glow relative z-10">
+                  <div className="w-20 h-20 rounded-full bg-gradient-accent flex items-center justify-center mb-4 shadow-glow relative z-10 hover:scale-110 transition-transform duration-300 cursor-pointer">
                     <step.icon className="w-10 h-10 text-accent-foreground" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
@@ -71,8 +81,11 @@ const HowItWorks = () => {
           </div>
         </div>
 
-        <div className="text-center mt-16 animate-fade-in">
-          <button className="text-primary hover:text-primary-glow transition-colors text-lg font-medium underline underline-offset-4">
+        <div 
+          ref={ctaRef}
+          className={`text-center mt-16 scroll-fade-in ${ctaVisible ? 'visible' : ''}`}
+        >
+          <button className="text-primary hover:text-primary-glow transition-all duration-300 text-lg font-medium underline underline-offset-4 hover:scale-105 inline-block">
             See AIiIMEX in Action →
           </button>
         </div>

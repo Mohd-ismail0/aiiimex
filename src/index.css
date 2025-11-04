@@ -56,7 +56,82 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-reveal {
+    animation: textReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    opacity: 0;
+  }
+
+  .text-reveal-delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .text-reveal-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .text-reveal-delay-3 {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes textReveal {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scroll-fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .parallax {
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
