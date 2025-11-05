@@ -27,7 +27,7 @@ const Hero = () => {
               </span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed text-reveal text-reveal-delay-2">
-              AIiIMEX is India's first AI-powered Export Operating System — simplifying compliance, 
+              AIiIMEX is India's first AI-powered Export Operating System — simplifying compliance,
               automating workflows, and building trust across every trade stakeholder.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 text-reveal text-reveal-delay-3">
@@ -35,8 +35,15 @@ const Hero = () => {
                 Join Early Access
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="hero" size="lg">
-                Watch Demo
+              <Button variant="hero" size="lg" asChild>
+                <a
+                  href="https://demo.aiiimex.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center"
+                >
+                  View Demo
+                </a>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground text-reveal text-reveal-delay-3">
@@ -44,13 +51,13 @@ const Hero = () => {
             </p>
           </div>
           <div className="relative">
-            <div 
+            <div
               className="relative rounded-2xl overflow-hidden shadow-elegant transform transition-transform duration-300"
               style={{ transform: `translateY(${scrollY * 0.15}px)` }}
             >
-              <img 
-                src={heroImage} 
-                alt="Global trade network visualization" 
+              <img
+                src={heroImage}
+                alt="Global trade network visualization"
                 className="w-full h-auto"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />

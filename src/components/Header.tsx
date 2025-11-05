@@ -59,10 +59,15 @@ const Header = () => {
                 {link.label}
               </button>
             ))}
+            <Button variant="outline" asChild className="ml-4">
+              <a href="https://demo.aiiimex.com" target="_blank" rel="noreferrer">
+                View Demo
+              </a>
+            </Button>
             <Button
               variant="cta"
               onClick={() => scrollToSection("cta")}
-              className="ml-4"
+              className="ml-2"
             >
               Join Early Access
             </Button>
@@ -90,10 +95,15 @@ const Header = () => {
                   {link.label}
                 </button>
               ))}
+              <Button variant="outline" asChild className="w-full mt-2">
+                <a href="https://demo.aiiimex.com" target="_blank" rel="noreferrer">
+                  View Demo
+                </a>
+              </Button>
               <Button
                 variant="cta"
                 onClick={() => scrollToSection("cta")}
-                className="w-full mt-2"
+                className="w-full"
               >
                 Join Early Access
               </Button>
